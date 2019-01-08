@@ -1,0 +1,28 @@
+{
+  "name": "api-graphql-boilerplate",
+  "version": "1.0.0",
+  "description": "API GraphQL Boilerplate",
+  "main": "dist/index.js",
+  "scripts": {
+    "prestart": "babel src -d dist --copy-files",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbsnto/api-graphql-boilerplate.git"
+  },
+  "author": "Sebastião Neto <sbsnto@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sbsnto/api-graphql-boilerplate/issues"
+  },
+  "homepage": "https://github.com/sbsnto/api-graphql-boilerplate#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0"
+  }
+}
