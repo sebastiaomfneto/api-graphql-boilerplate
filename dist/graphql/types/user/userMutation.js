@@ -23,6 +23,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 var createUser = exports.createUser = {
   description: 'Create User',
   type: _userType2.default,
@@ -34,6 +37,9 @@ var createUser = exports.createUser = {
   resolve: userResolver.createUser
 };
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 var updateUser = exports.updateUser = {
   description: 'Update User',
   type: _userType2.default,
@@ -48,6 +54,9 @@ var updateUser = exports.updateUser = {
   resolve: userResolver.updateUser
 };
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 var removeUser = exports.removeUser = {
   description: 'Remove User',
   type: _graphql.GraphQLBoolean,

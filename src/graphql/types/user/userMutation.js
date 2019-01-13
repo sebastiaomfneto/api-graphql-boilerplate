@@ -2,9 +2,11 @@ import { GraphQLNonNull, GraphQLID, GraphQLBoolean } from 'graphql';
 
 import userType from './userType';
 import userInput from './userInput';
-
 import * as userResolver from './userResolver';
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 export const createUser = {
   description: 'Create User',
   type: userType,
@@ -16,6 +18,9 @@ export const createUser = {
   resolve: userResolver.createUser
 };
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 export const updateUser = {
   description: 'Update User',
   type: userType,
@@ -30,6 +35,9 @@ export const updateUser = {
   resolve: userResolver.updateUser
 };
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 export const removeUser = {
   description: 'Remove User',
   type: GraphQLBoolean,

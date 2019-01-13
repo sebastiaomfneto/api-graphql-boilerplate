@@ -19,6 +19,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 var getUser = exports.getUser = {
   description: 'Get User',
   type: _userType2.default,
@@ -30,6 +33,9 @@ var getUser = exports.getUser = {
   resolve: userResolver.getUser
 };
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 var getUsers = exports.getUsers = {
   description: 'Get Users',
   type: (0, _graphql.GraphQLNonNull)((0, _graphql.GraphQLList)(_userType2.default)),

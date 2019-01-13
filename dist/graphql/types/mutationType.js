@@ -17,5 +17,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 exports.default = new _graphql.GraphQLObjectType({
   name: 'Mutation',
   description: 'Root Mutation Type',
-  fields: _extends({}, userMutation)
+  fields: function fields() {
+    return _extends({}, userMutation);
+  }
 });

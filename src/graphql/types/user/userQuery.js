@@ -1,9 +1,11 @@
 import { GraphQLNonNull, GraphQLID, GraphQLList } from 'graphql';
 
 import userType from './userType';
-
 import * as userResolver from './userResolver';
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 export const getUser = {
   description: 'Get User',
   type: userType,
@@ -13,8 +15,11 @@ export const getUser = {
     }
   },
   resolve: userResolver.getUser
-};
+};  
 
+/**
+ * @type {GraphQLFieldConfig}
+ */
 export const getUsers = {
   description: 'Get Users',
   type: GraphQLNonNull(GraphQLList(userType)),

@@ -17,5 +17,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 exports.default = new _graphql.GraphQLObjectType({
   name: 'Query',
   description: 'Root Query Type',
-  fields: _extends({}, userQuery)
+  fields: function fields() {
+    return _extends({}, userQuery);
+  }
 });

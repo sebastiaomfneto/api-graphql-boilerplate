@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "prestart": "babel src -d dist --copy-files",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "dev": "nodemon --exec babel-node src -d dist --copy-files"
   },
   "repository": {
     "type": "git",
@@ -18,16 +19,18 @@
   },
   "homepage": "https://github.com/sbsnto/api-graphql-boilerplate#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
-    "graphql-relay": "^0.5.5"
+    "knex": "^0.16.3",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.18.9"
   }
 }
