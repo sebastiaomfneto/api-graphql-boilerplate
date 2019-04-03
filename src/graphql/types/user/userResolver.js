@@ -1,3 +1,5 @@
+import { userLoader } from './userLoader';
+
 /**
  * @typedef {Object} User
  * @property {number} id
@@ -13,12 +15,8 @@
  * @param {any} ctx
  * @return {Promise<User>}
  */
-export async function getUser(root, args, { db }) {
-  return await db
-    .table('user')
-    .select()
-    .where(args)
-    .first();
+export async function getUser(_root, { id }, { db }) {
+  return await userLoader.load(id);
 }
 
 /**
@@ -28,8 +26,8 @@ export async function getUser(root, args, { db }) {
  * @param {any} ctx
  * @return {Promise<User[]>}
  */
-export async function getUsers(root, args, { db }) {
-  return await db.table('user').select();
+export async function getUsers(_root, _args, { db }) {
+  return await db.table('user').select('*');
 }
 
 /**
@@ -39,7 +37,7 @@ export async function getUsers(root, args, { db }) {
  * @param {any} ctx
  * @return {Promise<User>}
  */
-export async function createUser(root, { user }, { db }) {
+export async function createUser(_root, { user }, { db }) {
   const [result] = await db
     .table('user')
     .returning('*')
@@ -55,12 +53,14 @@ export async function createUser(root, { user }, { db }) {
  * @param {any} ctx
  * @return {Promise<User>}
  */
-export async function updateUser(root, { id, user }, { db }) {
+export async function updateUser(_root, { id, user }, { db }) {
   const [result] = await db
     .table('user')
     .returning('*')
     .update(user)
     .where({ id });
+
+  userLoader.clear(id);
 
   return result;
 }
@@ -72,9 +72,11 @@ export async function updateUser(root, { id, user }, { db }) {
  * @param {any} ctx
  * @return {Promise<void>}
  */
-export async function removeUser(root, args, { db }) {
+export async function removeUser(_root, args, { db }) {
   await db
     .table('user')
     .delete()
     .where(args);
+
+  userLoader.clear(id);
 }
