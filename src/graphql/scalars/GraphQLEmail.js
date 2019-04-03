@@ -15,7 +15,6 @@ function validateEmail(value) {
 
 export default new GraphQLScalarType({
   name: 'Email',
-  description: 'E-mail',
   serialize: validateEmail,
   parseValue: validateEmail,
   parseLiteral: ast => {
@@ -23,7 +22,7 @@ export default new GraphQLScalarType({
       throw new Error('Value must be either a String.');
     }
 
-    if (value.match(/^\S+@\S+$/) === false) {
+    if (/^\S+@\S+$/.test(ast.value) === false) {
       throw new Error('Value must be a valid email.');
     }
 
