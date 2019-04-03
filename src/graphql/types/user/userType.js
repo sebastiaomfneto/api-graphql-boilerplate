@@ -1,6 +1,5 @@
-import { GraphQLObjectType, GraphQLNonNull, GraphQLID } from 'graphql';
-
-import userInput from './userInput';
+import { GraphQLObjectType, GraphQLNonNull, GraphQLID, GraphQLString, GraphQLBoolean } from 'graphql';
+import GraphQLEmail from '../../scalars/GraphQLEmail';
 
 export default new GraphQLObjectType({
   name: 'User',
@@ -9,6 +8,25 @@ export default new GraphQLObjectType({
     id: {
       type: GraphQLNonNull(GraphQLID)
     },
-    ...userInput.getFields()
+    name: {
+      type: GraphQLNonNull(GraphQLString),
+      resolve(root, _args, _ctx, info) {
+        const [fieldNode] = info.fieldNodes;
+
+        const directive = fieldNode.directives.find(i => i.name.value === 'uppercase');
+
+        if (directive) {
+          return root.name.toUpperCase();
+        }
+
+        return root.name;
+      }
+    },
+    email: {
+      type: GraphQLNonNull(GraphQLEmail)
+    },
+    active: {
+      type: GraphQLBoolean
+    }
   })
 });

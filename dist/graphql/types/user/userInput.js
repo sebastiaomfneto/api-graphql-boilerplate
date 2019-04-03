@@ -6,6 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _graphql = require('graphql');
 
+var _GraphQLEmail = require('../../scalars/GraphQLEmail');
+
+var _GraphQLEmail2 = _interopRequireDefault(_GraphQLEmail);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = new _graphql.GraphQLInputObjectType({
   name: 'UserInput',
   description: 'User Model Input',
@@ -15,7 +21,7 @@ exports.default = new _graphql.GraphQLInputObjectType({
         type: (0, _graphql.GraphQLNonNull)(_graphql.GraphQLString)
       },
       email: {
-        type: (0, _graphql.GraphQLNonNull)(_graphql.GraphQLString)
+        type: (0, _graphql.GraphQLNonNull)(_GraphQLEmail2.default)
       },
       active: {
         type: _graphql.GraphQLBoolean
