@@ -1,12 +1,17 @@
-const path = require('path');
-
 module.exports = {
-  client: 'sqlite3',
+  client: 'postgresql',
+  debug: true,
   connection: {
-    filename: path.resolve(__dirname, './data/database.db')
+    database: 'api-graphql-boilerplate-db',
+    user: 'postgres',
+    password: 'developerIC97'
+  },
+  pool: {
+    min: 2,
+    max: 10
   },
   migrations: {
-    directory: path.resolve(__dirname, './data/migrations')
-  },
-  useNullAsDefault: true
+    tableName: 'knex_migrations',
+    directory: './data/migrations'
+  }
 };
