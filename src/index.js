@@ -26,6 +26,4 @@ server.use(
   })
 );
 
-server.listen(PORT, HOST, () =>
-  console.log(`Server listening on http://${HOST}:${PORT}`)
-);
+server.listen(PORT, HOST, () => console.log(`Server listening on http://${HOST}:${PORT}`));

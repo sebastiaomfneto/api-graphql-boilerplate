@@ -1,9 +1,5 @@
-import {
-  GraphQLInputObjectType,
-  GraphQLNonNull,
-  GraphQLString,
-  GraphQLBoolean
-} from 'graphql';
+import { GraphQLInputObjectType, GraphQLNonNull, GraphQLString, GraphQLBoolean } from 'graphql';
+import GraphQLEmail from '../../scalars/GraphQLEmail';
 
 export default new GraphQLInputObjectType({
   name: 'UserInput',
@@ -13,7 +9,7 @@ export default new GraphQLInputObjectType({
       type: GraphQLNonNull(GraphQLString)
     },
     email: {
-      type: GraphQLNonNull(GraphQLString)
+      type: GraphQLNonNull(GraphQLEmail)
     },
     active: {
       type: GraphQLBoolean
