@@ -21,15 +21,15 @@ export default new GraphQLScalarType({
   name: 'Email',
   serialize: validateEmail,
   parseValue: validateEmail,
-  parseLiteral: ast => {
-    if (ast.kind !== Kind.STRING) {
+  parseLiteral: valueNode => {
+    if (valueNode.kind !== Kind.STRING) {
       throw new Error('Value must be either a String.');
     }
 
-    if (/^\S+@\S+$/.test(ast.value) === false) {
+    if (/^\S+@\S+$/.test(valueNode.value) === false) {
       throw new Error('Value must be a valid email.');
     }
 
-    return ast.value;
+    return valueNode.value;
   }
 });
