@@ -1,5 +1,7 @@
 import { userLoader } from './userLoader';
 
+import databaseInstance from '../../../environment';
+
 /**
  * @typedef {Object} User
  * @property {number} id
@@ -80,3 +82,25 @@ export async function removeUser(_root, args, { db }) {
 
   userLoader.clear(id);
 }
+
+/**
+ * Método responsável por monitor e notificar por novos usuários.
+ */
+export async function* watchNewUsers() {
+  const connection = await databaseInstance.client.acquireConnection();
+
+  let nextResolve;
+
+  connection.query('LISTEN new_user');
+  connection.on('notification', message => nextResolve(JSON.parse(message.payload)));
+
+  while (true) {
+    yield new Promise(resolve => (nextResolve = resolve));
+  }
+}
+
+databaseInstance.client.acquireConnection()
+  .then(connection => {
+    connection.query('LISTEN new_user');
+    connection.on('notification', message => console.log(JSON.parse(message.payload)));
+  })
