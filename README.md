@@ -1,2 +1,2 @@
-# api-graphql-boilerplate
+# api-graphql-boilerplate (Em desenvolvimento)
 API GraphQL Boilerplate
